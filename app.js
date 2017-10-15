@@ -64,10 +64,19 @@ app.get('/articles/add', function(req, res){
 
 //Add Submit POST Routes
 app.post('/articles/add', function(req, res){
-  //let article = new Article();
-  //article.title =
-  console.log(req.body.title);
-  return;
+  let article = new Article();
+  article.title = req.body.title;
+  article.author = req.body.author;
+  article.body = req.body.body;
+
+  article.save(function(err){
+    if(err){
+      console.log(err);
+      return
+    } else {
+      res.redirect('/');
+    }
+  });
 });
 
 
