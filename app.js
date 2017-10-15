@@ -10,10 +10,6 @@ mongoose.promise = global.Promise;
 var db = mongoose.connection;
 
 
-// Check for DB errors
-db.on('error', function(err){
-  console.log(err);
-});
 
 // Check for DB connection
 db.once('open', function(){
@@ -21,13 +17,17 @@ db.once('open', function(){
 });
 
 
+// Check for DB errors
+db.on('error', function(err){
+  console.log(err);
+});
+
+
 // Init App
 const app = express();
 
-
-//Bring in Models
-var article = require('./models/article');
-
+// Bring in models
+let Article = require('./models/article');
 
 // Load View Engine
 app.set('views', path.join(__dirname, 'views'));
@@ -40,14 +40,15 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
+
 // Home Route
 app.get('/', function(req, res){
-  article.find({}, function (err, articles){
+  Article.find({}, function(err, articles){
     if(err){
       console.log(err);
     } else {
       res.render('index', {
-        title:'Articles',
+        title: 'Articles',
         articles: articles
       });
     }
@@ -61,22 +62,12 @@ app.get('/articles/add', function(req, res){
   })
 });
 
-// Add submit POST Route
+//Add Submit POST Routes
 app.post('/articles/add', function(req, res){
-  let article = new Article();
-  article.title = req.body.title;
-  article.author = req.body.author;
-  article.body = req.body.body;
-
-  article.save(function(err){
-    if(err){
-      console.log(err);
-      return;
-    } else {
-      console.log(req.body);
-      res.redirect('/');
-    }
-  });
+  //let article = new Article();
+  //article.title =
+  console.log(req.body.title);
+  return;
 });
 
 
