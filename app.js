@@ -36,10 +36,17 @@ app.set('view engine', 'pug')
 
 // Body-Parser Middleware
 //parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
-// parse application/json
-app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }));
 
+// parse application/json
+app.use(bodyParser.json());
+
+// Set Public folder
+app.use(express.static(path.join(__dirname, 'public')));
+
+
+
+///// Routes  //////
 
 // Home Route
 app.get('/', function(req, res){
@@ -52,6 +59,15 @@ app.get('/', function(req, res){
         articles: articles
       });
     }
+  });
+});
+
+//Get Single Routes
+app.get('/article/:id', function(req, res){
+  Article.findById(req.params.id, function(err, article){
+    res.render('article',{
+      article:article
+    });
   });
 });
 
