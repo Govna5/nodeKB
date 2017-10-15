@@ -71,11 +71,19 @@ app.get('/article/:id', function(req, res){
   });
 });
 
+
 // Add Routes
 app.get('/articles/add', function(req, res){
   res.render('add_article', {
     title:'Add Article'
   })
+});
+
+// Add Contact Page Routes
+app.get('/contact', function(req, res){
+  res.render('contact',{
+    title:'Contact Page'
+  });
 });
 
 //Add Submit POST Routes
