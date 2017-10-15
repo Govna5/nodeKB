@@ -1,0 +1,26 @@
+{
+  "name": "nodekb",
+  "version": "1.0.0",
+  "description": "Simple knowledge base app",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Govna5/nodeKB.git"
+  },
+  "author": "Julian Governale",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Govna5/nodeKB/issues"
+  },
+  "homepage": "https://github.com/Govna5/nodeKB#readme",
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mongoose": "^4.10.8",
+    "pug": "^2.0.0-rc.4"
+  }
+}
