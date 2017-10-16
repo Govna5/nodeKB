@@ -3,6 +3,7 @@ html
   head
     title Govna LLC Page
     link(rel= "stylesheet", href='/bower_components/bootstrap/dist/css/bootstrap.css')
+    link(rel= "stylesheet", href='/css/style.css')
     body
       nav.navbar.navbar-inverse
         .container
@@ -12,7 +13,7 @@ html
               span.icon-bar
               span.icon-bar
               span.icon-bar
-            a.navbar-brand(href='#') Node Knowledgebase
+            a.navbar-brand(href='/') Node Knowledgebase
           #navbar.collapse.navbar-collapse
             ul.nav.navbar-nav
               li
@@ -22,6 +23,7 @@ html
               li
                 a(href='/contact') Contact﻿
     .container
+      != messages('message', locals)
       block content
       br
       hr
@@ -29,3 +31,4 @@ html
           p Copyrite &copy; 2017
     script(src='/bower_components/jquery/dist/jquery.js')
     script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
+    script(src='/js/main.js')
