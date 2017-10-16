@@ -137,7 +137,6 @@ app.post('/articles/add', function(req, res){
 
   article.save(function(err){
     if(err){
-      req.flash('danger', 'Required Field Missing');
       console.log(err);
       return;
     } else {
