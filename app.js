@@ -128,7 +128,7 @@ app.get('/contact', function(req, res){
 
 ////  GET , POST, DElELTE Routes ////
 
-//Add Submit POST Routes
+//Add Submit POST Route
 app.post('/articles/add', function(req, res){
   let article = new Article();
   article.title = req.body.title;
@@ -137,16 +137,17 @@ app.post('/articles/add', function(req, res){
 
   article.save(function(err){
     if(err){
+      req.flash('danger', 'Required Field Missing');
       console.log(err);
-      return
+      return;
     } else {
-      req.flash('success', 'Artilce Added');
+      req.flash('success', 'Artilce "' +req.body.title , '" Added');
       res.redirect('/');
     }
   });
 });
 
-//Update Submit Routes
+//Update Article Route
 app.post('/articles/edit/:id', function(req, res){
   let article = {};
   article.title = req.body.title;
@@ -161,7 +162,7 @@ app.post('/articles/edit/:id', function(req, res){
       return;
     } else {
       console.log(req.body);
-      //req.flash('Success, Artilce Added');
+      req.flash('success', ' ' +req.body.title , '  Updated')
       res.redirect('/');
     }
   });
@@ -170,7 +171,7 @@ app.post('/articles/edit/:id', function(req, res){
 
 
 
-//Delete Article Routes
+//Delete Article Route
 app.delete('/article/:id', function(req, res){
   let query = {_id:req.params.id}
 
@@ -178,7 +179,7 @@ app.delete('/article/:id', function(req, res){
     if(err){
       console.log(err);
     }
-    req.flash('danger', 'Article Deleted');
+    req.flash('success', 'Article Deleted');
     res.send('Success');
   });
 });
