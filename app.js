@@ -118,12 +118,20 @@ app.get('/articles/add', function(req, res){
   })
 });
 
-// Add Contact Page Routes
+// Get Contact Page Routes
 app.get('/contact', function(req, res){
   res.render('contact',{
     title:'Contact Page'
   });
 });
+
+// Get About US Page Route
+app.get('/about_us', function(req, res){
+  res.render('about_us',{
+    title:'About Us'
+  });
+});
+
 
 
 ////  GET , POST, DElELTE Routes ////
@@ -137,7 +145,8 @@ app.post('/articles/add', function(req, res){
 
   article.save(function(err){
     if(err){
-      req.flash('danger', 'Required Field Missing');
+      req.flash('danger', 'Errors ' );
+      res.redirect('/articles/add')
       console.log(err);
       return;
     } else {

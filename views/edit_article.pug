@@ -10,7 +10,9 @@ block content
           label Author:
           input.form-control(name= 'author', type='text', value=article.author)
       #form-group
-          label Author:
-          textarea.form-control(name= 'body')= article.body
+          label Description:
+          textarea.form-control(name= 'body', cols="40", rows="15")= article.body
       br
       input.btn.btn-primary(type='submit',value='Submit')
+      | #{' '}
+      a.btn.btn-primary(href='/article/'+article._id) Cancel
