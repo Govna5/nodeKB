@@ -23,8 +23,8 @@
     "express": "^4.16.2",
     "express-messages": "^1.0.1",
     "express-session": "^1.15.6",
-    "express-validator": "^4.2.1",
-    "mongoose": "^4.10.8",
+    "express-validator": "^5.3.1",
+    "mongoose": "^5.4.10",
     "mpath": "^0.5.1",
     "pug": "^2.0.0-rc.4"
   }
